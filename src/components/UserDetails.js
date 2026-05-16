@@ -10,14 +10,33 @@ const UserDetails=()=>{
 
 
   useEffect(()=>{
-    fetch(`https://jsonplaceholder.typicode.com/users/${id}`).then(res=>res.json()).then(obj=>{
+
+    setLoading(true);
+    setPerson(null);
+    getDetails();
+
+    
+      
+  },[id])
+
+  async function getDetails(){
+    try{
+      let res= await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+      let data= await res.json();
       setTimeout(()=>{
        
         setPerson(obj);
         setLoading(false);
-      });
-      },2000)
-  },[id])
+      },1000);
+      
+
+    }
+    catch(err){
+      console.log(err);
+      setLoading(false);
+    }
+
+  }
 
   if(loading) return (<div>Loading...</div>)
   return (
