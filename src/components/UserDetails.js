@@ -5,16 +5,17 @@ import { useParams } from "react-router-dom/cjs/react-router-dom";
 const UserDetails=()=>{
 
   let {id}= useParams();
-  let [person,setPerson]= useState("");
+  let [person,setPerson]= useState(null);
   let [loading,setLoading]=useState(true);
 
 
   useEffect(()=>{
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`).then(res=>res.json()).then(obj=>{
       setTimeout(()=>{
+       
+        setPerson(obj);
         setLoading(false);
-
-        setPerson(obj)});
+      });
       },2000)
   },[id])
 
