@@ -19,23 +19,37 @@ const UserDetails=()=>{
       
   },[id])
 
-  async function getDetails(){
-    try{
-      let res= await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
-      let data= await res.json();
-      setTimeout(()=>{
+  // async function getDetails(){
+  //   try{
+  //     let res= await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+  //     let data= await res.json();
+  //     setTimeout(()=>{
        
-        setPerson(data);
-        setLoading(false);
-      },1000);
+  //       setPerson(data);
+  //       setLoading(false);
+  //     },1000);
       
 
-    }
-    catch(err){
+  //   }
+  //   catch(err){
+  //     console.log(err);
+  //     setLoading(false);
+  //   }
+
+  // }
+  function getDetails() {
+  fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      setTimeout(() => {
+        setPerson(data);
+        setLoading(false);
+      }, 1000);
+    })
+    .catch((err) => {
       console.log(err);
       setLoading(false);
-    }
-
+    });
   }
 
   if(loading) return (<div>Loading...</div>)
