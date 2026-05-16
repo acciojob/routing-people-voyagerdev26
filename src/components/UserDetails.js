@@ -12,7 +12,10 @@ const UserDetails=()=>{
   useEffect(()=>{
     fetch(`https://jsonplaceholder.typicode.com/users/${id}`).then(res=>res.json()).then(obj=>{
       setLoading(false);
-      setPerson(obj)});
+      setTimeout(()=>{
+
+        setPerson(obj)});
+      },500)
   },[id])
 
   if(loading) return <div>Loading...</div>
