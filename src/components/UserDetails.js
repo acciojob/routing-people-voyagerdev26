@@ -15,7 +15,7 @@ const UserDetails=()=>{
       setTimeout(()=>{
 
         setPerson(obj)});
-      },500)
+      },1000)
   },[id])
 
   if(loading) return <div>Loading...</div>
