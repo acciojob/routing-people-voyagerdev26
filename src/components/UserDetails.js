@@ -25,7 +25,7 @@ const UserDetails=()=>{
       let data= await res.json();
       setTimeout(()=>{
        
-        setPerson(obj);
+        setPerson(data);
         setLoading(false);
       },1000);
       
